@@ -929,22 +929,22 @@
             <h2 class="section-title">Jenkins Basics</h2>
             <div class="cards-grid">
                 <div class="card" onclick="showModal('what-is-jenkins')">
-                    <div class="card-icon">🎯</div>
+                    <div class="card-icon">🚀</div>
                     <h3>What is Jenkins?</h3>
                     <p>Learn about Jenkins and its role in CI/CD</p>
                 </div>
                 <div class="card" onclick="showModal('installation')">
-                    <div class="card-icon">⚡</div>
+                    <div class="card-icon">⚙️</div>
                     <h3>Installation</h3>
                     <p>Step-by-step installation guide</p>
                 </div>
                 <div class="card" onclick="showModal('architecture')">
-                    <div class="card-icon">🔧</div>
+                    <div class="card-icon">🏗️</div>
                     <h3>Architecture</h3>
                     <p>Understanding Jenkins architecture</p>
                 </div>
                 <div class="card" onclick="showModal('jobs')">
-                    <div class="card-icon">💼</div>
+                    <div class="card-icon">📋</div>
                     <h3>Jobs & Builds</h3>
                     <p>Creating and managing Jenkins jobs</p>
                 </div>
