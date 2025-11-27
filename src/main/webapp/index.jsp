@@ -24,6 +24,12 @@
             --white: #ffffff;
             --gray: #64748b;
             --light-gray: #f8fafc;
+            --primary-green: #10b981;
+            --secondary-green: #34d399;
+            --light-green: #6ee7b7;
+            --lighter-green: #a7f3d0;
+            --pale-green: #d1fae5;
+            --dark-green: #059669;
         }
 
         body {
@@ -97,24 +103,165 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 50%, var(--dark-blue) 100%);
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 50%, var(--light-green) 100%);
             color: var(--white);
             padding: 150px 0 100px;
             text-align: center;
             margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-30px) translateX(20px);
+            }
+        }
+
+        .hero .shape {
+            position: absolute;
+            opacity: 0.1;
+        }
+
+        .hero .shape-1 {
+            top: 10%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            border: 3px solid white;
+            border-radius: 20px;
+            transform: rotate(45deg);
+            animation: rotate 10s linear infinite;
+        }
+
+        .hero .shape-2 {
+            top: 60%;
+            left: 80%;
+            width: 60px;
+            height: 60px;
+            border: 3px solid white;
+            border-radius: 50%;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .hero .shape-3 {
+            top: 30%;
+            right: 15%;
+            width: 0;
+            height: 0;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 70px solid rgba(255, 255, 255, 0.15);
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .hero .shape-4 {
+            bottom: 20%;
+            left: 15%;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.1) 60%, transparent 60%);
+            animation: rotate 15s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.2;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content h2 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-weight: 800;
         }
 
         .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
             animation: fadeInUp 1s ease 0.2s backwards;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-icons {
+            position: absolute;
+            font-size: 2.5rem;
+            opacity: 0.15;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .icon-1 {
+            top: 15%;
+            right: 20%;
+            animation-delay: 0s;
+        }
+
+        .icon-2 {
+            bottom: 25%;
+            left: 25%;
+            animation-delay: 1s;
+        }
+
+        .icon-3 {
+            top: 40%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+
+        .icon-4 {
+            bottom: 35%;
+            right: 25%;
+            animation-delay: 1.5s;
         }
 
         @keyframes fadeInUp {
@@ -129,22 +276,24 @@
         }
 
         .btn-primary {
-            background-color: var(--light-blue);
-            color: var(--white);
-            padding: 12px 30px;
+            background-color: var(--white);
+            color: var(--primary-green);
+            padding: 14px 35px;
             border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.5px;
         }
 
         .btn-primary:hover {
-            background-color: var(--lighter-blue);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+            background-color: var(--dark-green);
+            color: var(--white);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
         }
 
         .btn-secondary {
@@ -683,10 +832,23 @@
             }
 
             .hero-content h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .hero-icons {
+                display: none;
+            }
+
+            .hero .shape {
+                display: none;
+            }
+
+            .btn-primary {
+                padding: 12px 28px;
                 font-size: 1rem;
             }
 
@@ -745,6 +907,14 @@
     </nav>
 
     <section id="home" class="hero">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="hero-icons icon-1">⚙️</div>
+        <div class="hero-icons icon-2">🚀</div>
+        <div class="hero-icons icon-3">📦</div>
+        <div class="hero-icons icon-4">🔧</div>
         <div class="container">
             <div class="hero-content">
                 <h2>Master Jenkins CI/CD</h2>
