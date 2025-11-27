@@ -39,6 +39,121 @@
             background: linear-gradient(135deg, var(--pale-green) 0%, var(--lighter-green) 50%, var(--light-gray) 100%);
             background-attachment: fixed;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .bg-circle {
+            position: fixed;
+            border-radius: 50%;
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-circle-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--primary-green), var(--secondary-green));
+            top: 10%;
+            left: 5%;
+            animation: moveCircle1 25s ease-in-out infinite;
+        }
+
+        .bg-circle-2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--light-blue), var(--lighter-blue));
+            top: 50%;
+            right: 10%;
+            animation: moveCircle2 30s ease-in-out infinite;
+        }
+
+        .bg-circle-3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, var(--secondary-green), var(--light-green));
+            bottom: 15%;
+            left: 15%;
+            animation: moveCircle3 35s ease-in-out infinite;
+        }
+
+        .bg-circle-4 {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, var(--lighter-green), var(--pale-green));
+            top: 30%;
+            right: 25%;
+            animation: moveCircle4 28s ease-in-out infinite;
+        }
+
+        .bg-circle-5 {
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, var(--light-blue), var(--pale-blue));
+            bottom: 30%;
+            right: 5%;
+            animation: moveCircle5 32s ease-in-out infinite;
+        }
+
+        @keyframes moveCircle1 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(100px, 150px) scale(1.2);
+            }
+            66% {
+                transform: translate(-50px, 200px) scale(0.9);
+            }
+        }
+
+        @keyframes moveCircle2 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(-120px, 80px) scale(1.1);
+            }
+            66% {
+                transform: translate(80px, -100px) scale(0.95);
+            }
+        }
+
+        @keyframes moveCircle3 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(150px, -100px) scale(1.15);
+            }
+            66% {
+                transform: translate(-80px, -150px) scale(0.85);
+            }
+        }
+
+        @keyframes moveCircle4 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(-100px, 120px) scale(1.2);
+            }
+            66% {
+                transform: translate(120px, -80px) scale(0.9);
+            }
+        }
+
+        @keyframes moveCircle5 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(-90px, -130px) scale(1.1);
+            }
+            66% {
+                transform: translate(110px, 100px) scale(0.95);
+            }
         }
 
         .container {
@@ -858,6 +973,12 @@
     </style>
 </head>
 <body>
+    <div class="bg-circle bg-circle-1"></div>
+    <div class="bg-circle bg-circle-2"></div>
+    <div class="bg-circle bg-circle-3"></div>
+    <div class="bg-circle bg-circle-4"></div>
+    <div class="bg-circle bg-circle-5"></div>
+
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
@@ -892,22 +1013,18 @@
             <h2 class="section-title">Jenkins Basics</h2>
             <div class="cards-grid">
                 <div class="card" onclick="showModal('what-is-jenkins')">
-                    <div class="card-icon">🚀</div>
                     <h3>What is Jenkins?</h3>
                     <p>Learn about Jenkins and its role in CI/CD</p>
                 </div>
                 <div class="card" onclick="showModal('installation')">
-                    <div class="card-icon">⚙️</div>
                     <h3>Installation</h3>
                     <p>Step-by-step installation guide</p>
                 </div>
                 <div class="card" onclick="showModal('architecture')">
-                    <div class="card-icon">🏗️</div>
                     <h3>Architecture</h3>
                     <p>Understanding Jenkins architecture</p>
                 </div>
                 <div class="card" onclick="showModal('jobs')">
-                    <div class="card-icon">📋</div>
                     <h3>Jobs & Builds</h3>
                     <p>Creating and managing Jenkins jobs</p>
                 </div>
