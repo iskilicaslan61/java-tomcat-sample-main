@@ -1259,7 +1259,7 @@ pipeline {
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 20256 Jenkins Learning Hub. Master CI/CD with Jenkins. Created by Ismail</p>
+            <p>&copy; 2026 Jenkins Learning Hub. Master CI/CD with Jenkins. Created by Ismail</p>
         </div>
     </footer>
 
@@ -1845,4 +1845,5 @@ sudo systemctl start jenkins
     </script>
 </body>
 </html>
+
 
