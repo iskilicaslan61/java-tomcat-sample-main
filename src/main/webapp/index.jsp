@@ -36,7 +36,9 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
-            background-color: var(--light-gray);
+            background: linear-gradient(135deg, var(--pale-green) 0%, var(--lighter-green) 50%, var(--light-gray) 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
         }
 
         .container {
@@ -231,37 +233,6 @@
             opacity: 0.95;
             animation: fadeInUp 1s ease 0.2s backwards;
             text-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
-        }
-
-        .hero-icons {
-            position: absolute;
-            font-size: 2.5rem;
-            opacity: 0.15;
-            animation: float 5s ease-in-out infinite;
-        }
-
-        .icon-1 {
-            top: 15%;
-            right: 20%;
-            animation-delay: 0s;
-        }
-
-        .icon-2 {
-            bottom: 25%;
-            left: 25%;
-            animation-delay: 1s;
-        }
-
-        .icon-3 {
-            top: 40%;
-            left: 15%;
-            animation-delay: 2s;
-        }
-
-        .icon-4 {
-            bottom: 35%;
-            right: 25%;
-            animation-delay: 1.5s;
         }
 
         @keyframes fadeInUp {
@@ -839,10 +810,6 @@
                 font-size: 1.1rem;
             }
 
-            .hero-icons {
-                display: none;
-            }
-
             .hero .shape {
                 display: none;
             }
@@ -911,10 +878,6 @@
         <div class="shape shape-2"></div>
         <div class="shape shape-3"></div>
         <div class="shape shape-4"></div>
-        <div class="hero-icons icon-1">⚙️</div>
-        <div class="hero-icons icon-2">🚀</div>
-        <div class="hero-icons icon-3">📦</div>
-        <div class="hero-icons icon-4">🔧</div>
         <div class="container">
             <div class="hero-content">
                 <h2>Master Jenkins CI/CD</h2>
