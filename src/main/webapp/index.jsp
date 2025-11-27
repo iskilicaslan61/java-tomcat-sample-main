@@ -178,10 +178,37 @@
             font-size: 2.5rem;
             margin-bottom: 3rem;
             color: var(--primary-blue);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--light-blue), var(--lighter-blue), var(--light-blue));
+            border-radius: 2px;
         }
 
         .section-dark .section-title {
             color: var(--white);
+        }
+
+        .section-dark .section-title::after {
+            background: linear-gradient(90deg, var(--lighter-blue), var(--pale-blue), var(--lighter-blue));
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-top: -2rem;
+            margin-bottom: 3rem;
+            font-weight: 400;
         }
 
         .cards-grid {
@@ -210,6 +237,12 @@
         .card-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
+            filter: grayscale(0%);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.2) rotate(5deg);
         }
 
         .card h3 {
@@ -305,19 +338,21 @@
 
         .tips-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
             margin-bottom: 4rem;
         }
 
         .tip-card {
-            background: linear-gradient(135deg, var(--light-blue) 0%, var(--secondary-blue) 100%);
+            background: linear-gradient(145deg, var(--light-blue) 0%, var(--secondary-blue) 50%, var(--dark-blue) 100%);
             color: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            transition: all 0.3s ease;
+            padding: 2.5rem;
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .tip-card::before {
@@ -327,50 +362,87 @@
             right: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
+        }
+
+        .tip-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lighter-blue), var(--pale-blue), var(--lighter-blue));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
         }
 
         .tip-card:hover::before {
             opacity: 1;
         }
 
+        .tip-card:hover::after {
+            transform: scaleX(1);
+        }
+
         .tip-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(30, 58, 138, 0.4);
         }
 
         .tip-number {
-            background-color: rgba(255, 255, 255, 0.2);
-            width: 50px;
-            height: 50px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tip-card:hover .tip-number {
+            transform: rotate(360deg) scale(1.1);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
         }
 
         .tip-card h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tip-card p {
+            line-height: 1.7;
+            font-size: 0.95rem;
+            opacity: 0.95;
         }
 
         .common-commands {
-            background-color: var(--white);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(30, 58, 138, 0.1);
+            background: linear-gradient(135deg, var(--white) 0%, var(--pale-blue) 100%);
+            padding: 3.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(30, 58, 138, 0.15);
+            border: 2px solid rgba(59, 130, 246, 0.1);
+            margin-top: 3rem;
         }
 
         .common-commands h3 {
             color: var(--primary-blue);
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
+            margin-bottom: 2.5rem;
+            font-size: 2rem;
             text-align: center;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(30, 58, 138, 0.1);
         }
 
         .commands-grid {
@@ -380,25 +452,45 @@
         }
 
         .command-item {
-            background: var(--pale-blue);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--light-blue);
+            background: var(--white);
+            padding: 1.8rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--light-blue);
             transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(30, 58, 138, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .command-item::before {
+            content: '💡';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .command-item:hover::before {
+            opacity: 0.3;
         }
 
         .command-item:hover {
-            background: var(--lighter-blue);
+            background: linear-gradient(135deg, var(--light-blue), var(--secondary-blue));
             color: var(--white);
-            transform: translateX(5px);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.25);
+            border-left-color: var(--lighter-blue);
         }
 
         .command-item code {
             display: block;
             color: var(--primary-blue);
             font-weight: 700;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
+            margin-bottom: 0.7rem;
+            font-size: 1rem;
+            font-family: 'Courier New', monospace;
         }
 
         .command-item:hover code {
@@ -406,8 +498,9 @@
         }
 
         .command-item p {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--gray);
+            line-height: 1.5;
         }
 
         .command-item:hover p {
@@ -666,22 +759,22 @@
             <h2 class="section-title">Jenkins Basics</h2>
             <div class="cards-grid">
                 <div class="card" onclick="showModal('what-is-jenkins')">
-                    <div class="card-icon">🚀</div>
+                    <div class="card-icon">🎯</div>
                     <h3>What is Jenkins?</h3>
                     <p>Learn about Jenkins and its role in CI/CD</p>
                 </div>
                 <div class="card" onclick="showModal('installation')">
-                    <div class="card-icon">⚙️</div>
+                    <div class="card-icon">⚡</div>
                     <h3>Installation</h3>
                     <p>Step-by-step installation guide</p>
                 </div>
                 <div class="card" onclick="showModal('architecture')">
-                    <div class="card-icon">🏗️</div>
+                    <div class="card-icon">🔧</div>
                     <h3>Architecture</h3>
                     <p>Understanding Jenkins architecture</p>
                 </div>
                 <div class="card" onclick="showModal('jobs')">
-                    <div class="card-icon">📋</div>
+                    <div class="card-icon">💼</div>
                     <h3>Jobs & Builds</h3>
                     <p>Creating and managing Jenkins jobs</p>
                 </div>
@@ -783,6 +876,7 @@ pipeline {
     <section id="tips" class="section">
         <div class="container">
             <h2 class="section-title">Tips & Best Practices</h2>
+            <p class="section-subtitle">Master Jenkins with these proven strategies and expert recommendations</p>
             <div class="tips-container">
                 <div class="tip-card">
                     <div class="tip-number">1</div>
