@@ -828,6 +828,28 @@
             display: none;
         }
 
+        #answer-feedback {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            animation: slideIn 0.3s ease;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -1218,6 +1240,7 @@ pipeline {
                     <div class="quiz-question">
                         <h3 id="question-text">Question will appear here</h3>
                         <div id="answers-container"></div>
+                        <div id="answer-feedback" class="hidden"></div>
                     </div>
                     <div class="quiz-controls">
                         <button class="btn-secondary" onclick="previousQuestion()">Previous</button>
@@ -1691,14 +1714,47 @@ sudo systemctl start jenkins
             const answersContainer = document.getElementById('answers-container');
             answersContainer.innerHTML = '';
 
+            const feedback = document.getElementById('answer-feedback');
+            const hasAnswered = userAnswers[currentQuestion] !== undefined;
+
             question.answers.forEach((answer, index) => {
                 const answerDiv = document.createElement('div');
                 answerDiv.className = 'answer-option';
                 answerDiv.textContent = answer;
                 answerDiv.onclick = () => selectAnswer(index);
 
-                if (userAnswers[currentQuestion] === index) {
-                    answerDiv.classList.add('selected');
+                // If already answered, show the result
+                if (hasAnswered) {
+                    // Show correct answer
+                    if (index === question.correct) {
+                        answerDiv.classList.add('correct');
+                    }
+
+                    // Show user's wrong answer
+                    if (index === userAnswers[currentQuestion] && userAnswers[currentQuestion] !== question.correct) {
+                        answerDiv.classList.add('incorrect');
+                    }
+
+                    // Disable clicking
+                    answerDiv.style.pointerEvents = 'none';
+
+                    // Show feedback
+                    if (userAnswers[currentQuestion] === question.correct) {
+                        feedback.textContent = '✓ Correct! Well done!';
+                        feedback.style.backgroundColor = 'rgba(16, 185, 129, 0.2)';
+                        feedback.style.color = '#10b981';
+                        feedback.style.border = '2px solid #10b981';
+                        feedback.classList.remove('hidden');
+                    } else {
+                        feedback.textContent = '✗ Incorrect. The correct answer is highlighted in green.';
+                        feedback.style.backgroundColor = 'rgba(239, 68, 68, 0.2)';
+                        feedback.style.color = '#ef4444';
+                        feedback.style.border = '2px solid #ef4444';
+                        feedback.classList.remove('hidden');
+                    }
+                } else {
+                    // Hide feedback for unanswered questions
+                    feedback.classList.add('hidden');
                 }
 
                 answersContainer.appendChild(answerDiv);
@@ -1707,13 +1763,40 @@ sudo systemctl start jenkins
 
         function selectAnswer(answerIndex) {
             userAnswers[currentQuestion] = answerIndex;
+            const question = quizData[currentQuestion];
+            const feedback = document.getElementById('answer-feedback');
 
             document.querySelectorAll('.answer-option').forEach((option, index) => {
-                option.classList.remove('selected');
-                if (index === answerIndex) {
-                    option.classList.add('selected');
+                option.classList.remove('selected', 'correct', 'incorrect');
+
+                // Show correct answer in green
+                if (index === question.correct) {
+                    option.classList.add('correct');
                 }
+
+                // Show selected wrong answer in red
+                if (index === answerIndex && answerIndex !== question.correct) {
+                    option.classList.add('incorrect');
+                }
+
+                // Disable all options after selection
+                option.style.pointerEvents = 'none';
             });
+
+            // Show feedback message
+            if (answerIndex === question.correct) {
+                feedback.textContent = '✓ Correct! Well done!';
+                feedback.style.backgroundColor = 'rgba(16, 185, 129, 0.2)';
+                feedback.style.color = '#10b981';
+                feedback.style.border = '2px solid #10b981';
+                feedback.classList.remove('hidden');
+            } else {
+                feedback.textContent = '✗ Incorrect. The correct answer is highlighted in green.';
+                feedback.style.backgroundColor = 'rgba(239, 68, 68, 0.2)';
+                feedback.style.color = '#ef4444';
+                feedback.style.border = '2px solid #ef4444';
+                feedback.classList.remove('hidden');
+            }
         }
 
         function nextQuestion() {
