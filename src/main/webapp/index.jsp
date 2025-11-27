@@ -1227,7 +1227,7 @@ pipeline {
                 </div>
                 <div id="quiz-results" class="hidden">
                     <h3>Quiz Complete!</h3>
-                    <p class="score-display">Your Score: <span id="final-score">0</span> / 5</p>
+                    <p class="score-display">Your Score: <span id="final-score">0</span> / <span id="total-questions">20</span></p>
                     <button class="btn-primary" onclick="restartQuiz()">Restart Quiz</button>
                 </div>
             </div>
@@ -1450,6 +1450,156 @@ sudo systemctl start jenkins
                     "The pipeline can run on any available agent",
                     "The pipeline requires a specific agent",
                     "The pipeline runs without any agent"
+                ],
+                correct: 1
+            },
+            {
+                question: "What is the default port for Jenkins web interface?",
+                answers: [
+                    "8000",
+                    "8080",
+                    "9090",
+                    "3000"
+                ],
+                correct: 1
+            },
+            {
+                question: "Which of the following is NOT a valid Jenkins job type?",
+                answers: [
+                    "Freestyle Project",
+                    "Pipeline",
+                    "Multibranch Pipeline",
+                    "Continuous Project"
+                ],
+                correct: 3
+            },
+            {
+                question: "What is the purpose of the 'post' section in a Declarative Pipeline?",
+                answers: [
+                    "To define pre-build actions",
+                    "To execute steps after stages complete",
+                    "To configure environment variables",
+                    "To set up build triggers"
+                ],
+                correct: 1
+            },
+            {
+                question: "Which Jenkins plugin architecture allows extending functionality?",
+                answers: [
+                    "Jenkins Modules",
+                    "Jenkins Extensions",
+                    "Jenkins Plugins",
+                    "Jenkins Components"
+                ],
+                correct: 2
+            },
+            {
+                question: "What command is used to checkout source code in a pipeline?",
+                answers: [
+                    "git clone",
+                    "checkout scm",
+                    "pull scm",
+                    "fetch repo"
+                ],
+                correct: 1
+            },
+            {
+                question: "In Jenkins architecture, what is the role of an Agent/Node?",
+                answers: [
+                    "Manages the Jenkins UI",
+                    "Stores build artifacts",
+                    "Executes build jobs",
+                    "Configures plugins"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is Blue Ocean in Jenkins?",
+                answers: [
+                    "A deployment strategy",
+                    "A modern UI for Jenkins pipelines",
+                    "A cloud hosting service",
+                    "A backup tool"
+                ],
+                correct: 1
+            },
+            {
+                question: "Which trigger periodically checks the SCM for changes?",
+                answers: [
+                    "GitHub webhook",
+                    "Build periodically",
+                    "Poll SCM",
+                    "Remote trigger"
+                ],
+                correct: 2
+            },
+            {
+                question: "What does SCM stand for in Jenkins?",
+                answers: [
+                    "Source Code Manager",
+                    "Software Configuration Management",
+                    "System Control Module",
+                    "Secure Credential Manager"
+                ],
+                correct: 1
+            },
+            {
+                question: "Which section defines where a pipeline or stage will run?",
+                answers: [
+                    "node",
+                    "executor",
+                    "agent",
+                    "workspace"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is the minimum Java version required for Jenkins LTS?",
+                answers: [
+                    "Java 8",
+                    "Java 10",
+                    "Java 11",
+                    "Java 15"
+                ],
+                correct: 2
+            },
+            {
+                question: "Which pipeline type is better for complex workflows with conditions?",
+                answers: [
+                    "Freestyle Pipeline",
+                    "Declarative Pipeline",
+                    "Scripted Pipeline",
+                    "Simple Pipeline"
+                ],
+                correct: 2
+            },
+            {
+                question: "What does the 'parallel' directive do in Jenkins Pipeline?",
+                answers: [
+                    "Runs multiple builds sequentially",
+                    "Executes stages concurrently",
+                    "Creates parallel branches in Git",
+                    "Deploys to multiple servers"
+                ],
+                correct: 1
+            },
+            {
+                question: "Where should you store your Jenkinsfile for best practices?",
+                answers: [
+                    "On the Jenkins master",
+                    "In a separate configuration repo",
+                    "In version control with your code",
+                    "In Jenkins global configuration"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is the purpose of Jenkins Shared Libraries?",
+                answers: [
+                    "Share files between builds",
+                    "Reuse pipeline code across projects",
+                    "Share credentials globally",
+                    "Distribute build artifacts"
                 ],
                 correct: 1
             }
